@@ -35,6 +35,12 @@ class UsersController < ApplicationController
       end
     end
 
+  def bulk_email
+    @users = User.all
+    UserMailer.send_bulk_email(@users).deliver_now
+    redirect_to users_path, notice: 'Emails sent successfully.'
+  end
+
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|

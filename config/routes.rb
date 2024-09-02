@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    collection do
+      post :bulk_email
+    end
+  end
+  
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   root "articles#index"
   
