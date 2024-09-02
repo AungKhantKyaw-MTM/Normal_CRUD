@@ -25,10 +25,7 @@ class UsersController < ApplicationController
   
       respond_to do |format|
         if @user.save
-          # Use `with` to pass user object to the mailer
-          Rails.logger.info("About to send email to #{@user.email}")
-          UserMailer.with(user: User.first).welcome_email.deliver_now
-          
+          UserMailer.welcome_email(@user).deliver_now
           format.html { redirect_to user_url(@user), notice: "User was successfully created." }
           format.json { render :show, status: :created, location: @user }
         else

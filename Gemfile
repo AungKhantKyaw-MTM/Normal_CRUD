@@ -67,3 +67,6 @@ group :test do
 end
 
 gem 'rspec-rails', '~> 6.1', '>= 6.1.3'
+gem 'byebug', '~> 11.1', '>= 11.1.3'
+gem 'letter_opener', '~> 1.10'
+gem 'letter_opener_web', '~> 3.0'
